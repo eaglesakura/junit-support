@@ -1,11 +1,13 @@
 package com.eaglesakura.junit;
 
+import com.eaglesakura.lambda.Action1;
 import com.eaglesakura.util.ReflectionUtil;
 import com.eaglesakura.util.StringUtil;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * オブジェクトの妥当性をチェックする
@@ -36,5 +38,19 @@ public class ObjectValidator<T> {
     public ObjectValidator<T> instanceOf(Class<? extends T> clazz) {
         assertTrue(StringUtil.format("%s instanceof %s", value.getClass(), clazz), ReflectionUtil.instanceOf(value, clazz));
         return this;
+    }
+
+    public ObjectValidator<T> check(Action1<T> action) {
+        try {
+            action.action(value);
+        } catch (Throwable e) {
+            e.printStackTrace();
+            fail();
+        }
+        return this;
+    }
+
+    public T get() {
+        return value;
     }
 }
