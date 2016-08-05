@@ -27,6 +27,22 @@ public class CollectionValidator<T> {
         return this;
     }
 
+    /**
+     * 要素全てがNULLではないことを検証する
+     */
+    public CollectionValidator<T> allNotNull() {
+        Iterator<T> iterator = values.iterator();
+        int index = 0;
+        while (iterator.hasNext()) {
+            T item = iterator.next();
+            if (item == null) {
+                fail(StringUtil.format("%s[%d] == null", values.toString(), index));
+            }
+            ++index;
+        }
+        return this;
+    }
+
     public CollectionValidator<T> sizeFrom(int size) {
         assertTrue(StringUtil.format("%d >= %d", values.size(), size), values.size() >= size);
         return this;
