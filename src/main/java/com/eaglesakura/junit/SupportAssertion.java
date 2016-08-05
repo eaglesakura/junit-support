@@ -1,5 +1,8 @@
 package com.eaglesakura.junit;
 
+import com.eaglesakura.lambda.Action0;
+import com.eaglesakura.lambda.ResultAction0;
+
 import org.junit.Assert;
 
 import java.util.Collection;
@@ -17,6 +20,14 @@ public class SupportAssertion extends Assert {
     public static void assertNotEmpty(Collection collection) {
         assertNotNull(collection);
         assertNotEquals(collection.size(), 0);
+    }
+
+    public static CodeBlockValidator<Object> codeBlock(String blockName, Action0 action) {
+        return new CodeBlockValidator<>(blockName, action);
+    }
+
+    public static <T> CodeBlockValidator<T> codeBlock(String blockName, ResultAction0<T> action) {
+        return new CodeBlockValidator<>(blockName, action);
     }
 
     public static LongValidator validate(int value) {

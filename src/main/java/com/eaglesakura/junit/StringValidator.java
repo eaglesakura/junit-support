@@ -46,6 +46,11 @@ public class StringValidator {
         return this;
     }
 
+    public StringValidator notContains(CharSequence check) {
+        assertTrue(StringUtil.format("contains[%s] -> value[%s]", check, value), !value.contains(check));
+        return this;
+    }
+
     public String get() {
         return value;
     }
