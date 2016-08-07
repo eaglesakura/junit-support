@@ -1,6 +1,7 @@
 package com.eaglesakura.junit;
 
 import com.eaglesakura.lambda.Action1;
+import com.eaglesakura.lambda.Action2;
 import com.eaglesakura.util.StringUtil;
 
 import java.util.Collection;
@@ -117,6 +118,20 @@ public class CollectionValidator<T> {
         try {
             for (T it : values) {
                 action.action(it);
+            }
+        } catch (Throwable e) {
+            e.printStackTrace();
+            fail();
+        }
+        return this;
+    }
+
+    public CollectionValidator<T> eachWithIndex(Action2<Integer, T> action) {
+        try {
+            int index = 0;
+            for (T it : values) {
+                action.action(index, it);
+                ++index;
             }
         } catch (Throwable e) {
             e.printStackTrace();
