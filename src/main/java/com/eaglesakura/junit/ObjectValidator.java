@@ -54,6 +54,8 @@ public class ObjectValidator<T> {
     public ObjectValidator<T> check(Action1<T> action) {
         try {
             action.action(value);
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();
