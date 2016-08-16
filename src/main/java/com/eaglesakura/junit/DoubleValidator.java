@@ -40,12 +40,17 @@ public class DoubleValidator {
     }
 
     public DoubleValidator from(double check) {
-        assertTrue(StringUtil.format("%d >= %d", value, check), value >= check);
+        assertTrue(StringUtil.format("%f >= %f", value, check), value >= check);
         return this;
     }
 
     public DoubleValidator to(double check) {
-        assertTrue(StringUtil.format("%d <= %d", value, check), value <= check);
+        assertTrue(StringUtil.format("%f <= %f", value, check), value <= check);
+        return this;
+    }
+
+    public DoubleValidator absTo(double check) {
+        assertTrue(StringUtil.format("%f <= %f", Math.abs(value), check), Math.abs(value) <= check);
         return this;
     }
 
