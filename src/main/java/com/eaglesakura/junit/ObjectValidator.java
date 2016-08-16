@@ -5,6 +5,7 @@ import com.eaglesakura.util.ReflectionUtil;
 import com.eaglesakura.util.StringUtil;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
@@ -21,6 +22,16 @@ public class ObjectValidator<T> {
 
     public ObjectValidator<T> notNull() {
         assertNotNull(value);
+        return this;
+    }
+
+    public ObjectValidator<T> notEquals(Object obj) {
+        assertNotEquals(value, obj);
+        return this;
+    }
+
+    public ObjectValidator<T> eq(Object obj) {
+        assertEquals(value, obj);
         return this;
     }
 
@@ -43,6 +54,8 @@ public class ObjectValidator<T> {
     public ObjectValidator<T> check(Action1<T> action) {
         try {
             action.action(value);
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();

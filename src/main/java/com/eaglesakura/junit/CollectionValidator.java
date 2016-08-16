@@ -83,6 +83,8 @@ public class CollectionValidator<T> {
                     action.action(item);
                 }
             }
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();
@@ -107,6 +109,8 @@ public class CollectionValidator<T> {
             }
 
             action.action(iterator.next());
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();
@@ -119,6 +123,8 @@ public class CollectionValidator<T> {
             for (T it : values) {
                 action.action(it);
             }
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();
@@ -133,6 +139,8 @@ public class CollectionValidator<T> {
                 action.action(index, it);
                 ++index;
             }
+        } catch (Error e) {
+            throw e;
         } catch (Throwable e) {
             e.printStackTrace();
             fail();
