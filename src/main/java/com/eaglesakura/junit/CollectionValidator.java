@@ -7,6 +7,7 @@ import com.eaglesakura.util.StringUtil;
 import java.util.Collection;
 import java.util.Iterator;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
@@ -51,6 +52,11 @@ public class CollectionValidator<T> {
 
     public CollectionValidator<T> sizeTo(int size) {
         assertTrue(StringUtil.format("%d <= %d", values.size(), size), values.size() <= size);
+        return this;
+    }
+
+    public CollectionValidator<T> sizeIs(int size) {
+        assertEquals(values.size(), size);
         return this;
     }
 
