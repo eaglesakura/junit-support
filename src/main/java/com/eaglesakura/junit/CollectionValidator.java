@@ -138,6 +138,26 @@ public class CollectionValidator<T> {
         return this;
     }
 
+    public CollectionValidator<T> each(Action2<Integer, T> action) {
+        try {
+            int index = 0;
+            for (T it : values) {
+                action.action(index, it);
+                ++index;
+            }
+        } catch (Error e) {
+            throw e;
+        } catch (Throwable e) {
+            e.printStackTrace();
+            fail();
+        }
+        return this;
+    }
+
+    /**
+     * each(Action2)を推奨する
+     */
+    @Deprecated
     public CollectionValidator<T> eachWithIndex(Action2<Integer, T> action) {
         try {
             int index = 0;
