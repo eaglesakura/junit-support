@@ -23,6 +23,10 @@ public class CollectionValidator<T> {
         this.values = values;
     }
 
+    public Collection<T> get() {
+        return values;
+    }
+
     public CollectionValidator<T> notEmpty() {
         assertNotNull(values);
         assertNotEquals(values.size(), 0);
