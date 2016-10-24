@@ -2,6 +2,7 @@ package com.eaglesakura.junit;
 
 import com.eaglesakura.lambda.Action0;
 import com.eaglesakura.lambda.ResultAction0;
+import com.eaglesakura.util.StringUtil;
 
 import org.junit.Assert;
 
@@ -15,6 +16,10 @@ public class SupportAssertion extends Assert {
     public static void assertNotEmpty(String str) {
         assertNotNull(str);
         assertNotEquals(str.length(), 0);
+    }
+
+    public static void assertEmpty(String str) {
+        assertTrue(StringUtil.isEmpty(str));
     }
 
     public static void assertNotEmpty(Collection collection) {
