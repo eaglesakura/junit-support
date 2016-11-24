@@ -3,6 +3,7 @@ package com.eaglesakura.junit;
 import com.eaglesakura.util.StringUtil;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
@@ -36,6 +37,11 @@ public class DoubleValidator {
 
     public DoubleValidator eq(double check) {
         assertEquals(value, check, delta);
+        return this;
+    }
+
+    public DoubleValidator notEq(double check) {
+        assertNotEquals(value, check, delta);
         return this;
     }
 
