@@ -1,9 +1,13 @@
 /**
  * 1.0.0   : release
+ * 1.1.x   : bintray対応
  */
-def ARTIFACT_VERSION = "1.0"
-def ARTIFACT_NAME = file(".").absoluteFile.name
-def ARTIFACT_INSTALL_TARGET = getArtifactInstallTarget()
+def ARTIFACT_VERSION = "1.1"
+def REPOSITORY_NAME = "maven"
+def BINTRAY_LICENSES = ["MIT"]
+def BINTRAY_LABELS = ["android"]
+def BINTRAY_API_KEY = System.env.BINTRAY_API_KEY
+def BINTRAY_GPG_PASS = System.env.BINTRAY_GPG_PASS
 
 buildscript {
     repositories {
