@@ -2,7 +2,6 @@ package com.eaglesakura.junit;
 
 import com.eaglesakura.lambda.Action0;
 import com.eaglesakura.lambda.ResultAction0;
-import com.eaglesakura.util.LogUtil;
 import com.eaglesakura.util.StringUtil;
 import com.eaglesakura.util.Timer;
 
@@ -67,9 +66,7 @@ public class CodeBlockValidator<ResultType> {
         Block block = mBlocks.remove(mBlocks.size() - 1);
 
         String message = StringUtil.format("block[%s] ideal[ < %d ms ] runtime[ %d ms = %.1f sec ]", blockName, timeoutMs, block.timer.end(), block.timer.endSec());
-        if (block.timer.end() < timeoutMs) {
-            LogUtil.out(name, message);
-        } else {
+        if (block.timer.end() > timeoutMs) {
             fail(message);
         }
 
