@@ -31,17 +31,8 @@ targetCompatibility = 1.7
 group = "com.eaglesakura"
 version = ARTIFACT_VERSION + getArtifactVersionSuffix()
 
-// Local or maven
-if (!hasProperty("EGLIBRARY_COMPILE_LOCAL")) {
-    ext.EGLIBRARY_COMPILE_LOCAL = false
-}
-
 dependencies {
-    if (EGLIBRARY_COMPILE_LOCAL) {
-        compile project(':eglibrary:java-commons')
-    } else {
-        compile "com.eaglesakura:java-commons:2.2.0"
-    }
+    compile "com.eaglesakura:java-commons:2.2.0"
     compile 'junit:junit:4.12'
 }
 
